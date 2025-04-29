@@ -1,7 +1,6 @@
 package com.game.catalago.entity;
 
 import com.game.catalago.dto.GameDTO;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,67 +11,59 @@ import jakarta.persistence.Table;
 @Table(name = "tb_game")
 public class GameEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String image;
-	private String name;
-	private String descripition;
-	
-	
-	public GameEntity( ) {
- 
-	}
-	 
-	public GameEntity(Long id, String image, String name, String descripition) {
-		 
-		this.id = id;
-		this.image = image;
-		this.name = name;
-		this.descripition = descripition;
-	}
-	 
-	
-	public void updatedDTO(GameDTO dto) {
-		 this.image = dto.image();
-		this.name = dto.name();
-		this.descripition = dto.descripition();
-		 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String image;
+    private String name;
+    private String description;   // **antes era descripition**
 
-	}
+    public GameEntity() { }
 
-	public Long getId() {
-		return id;
-	}
+    public GameEntity(Long id, String image, String name, String description) {
+        this.id = id;
+        this.image = image;
+        this.name = name;
+        this.description = description;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void updatedDTO(GameDTO dto) {
+        this.image = dto.image();
+        this.name = dto.name();
+        this.description = dto.description();  // DTO deve ter description()
+    }
 
-	public String getImage() {
-		return image;
-	}
+    // getters e setters renomeados:
 
-	public void setImage(String image) {
-		this.image = image;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getImage() {
+        return image;
+    }
 
-	public String getDescripition() {
-		return descripition;
-	}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
-	public void setDescripition(String descripition) {
-		this.descripition = descripition;
-	}
-	 
-	 
-	
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {   // antes getDescripition()
+        return description;
+    }
+
+    public void setDescription(String description) {  // antes setDescripition()
+        this.description = description;
+    }
 }
